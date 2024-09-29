@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Fiche Perso</title>
+  <link rel="stylesheet" href="fichePerso.css">
+  <script src="fichePerso.js"></script>
+</head>
+<body>
+  <input type="file" id="file" name="file" accept=".json" onchange="ReadFile()"/>
+  <div id="perso" class="hidden">
+    <p>Nom : <span id="name"></span></p>
+    <p>Niveau : <span id="level"></span></p>
+    <p>Race : <span id="race"></span></p>
+    <p>Genre : <span id="gender"></span></p>
+    <p>Alignement : <span id="alignment"></span></p>
+    <p>Dieu : <span id="deity"></span></p>
+  </div>
+</body>
+</html>
