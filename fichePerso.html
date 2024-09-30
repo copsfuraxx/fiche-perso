@@ -12,7 +12,7 @@
     <div>
       <div class="line">
         <p>Nom : <span id="name"></span></p>
-        <p>Niveau : <span id="level"></span></p>
+        <p>Age : <span id="age"></span></p>
         <p>Race : <span id="race"></span></p>
         <p>Genre : <span id="gender"></span></p>
         <p>Alignement : <span id="alignment"></span></p>
@@ -24,12 +24,11 @@
         <p>Oeils : <span id="eyes"></span></p>
         <p>Taille : <span id="height"></span></p>
         <p>Poid : <span id="weight"></span></p>
-        <p>Age : <span id="age"></span></p>
         <p>Histoire : <span id="background"></span></p>
       </div>
       <div>
         <h2>Information Principale</H2>
-        <div class="line">
+        <div class="line-wrap">
             <table id="ability">
               <thead><tr><th colspan="3">States</th></tr></thead>
               <tr id="ability-str">
@@ -62,6 +61,56 @@
                 <td class="value"></td>
                 <td class="bonus"></td>
               </tr>
+            </table>
+            <table id="saving">
+              <thead><tr><th colspan="3">Saving throws</th></tr></thead>
+              <tr id="saving-str">
+                <th>Force (STR)</th>
+                <td class="bonus"></td>
+                <td class="prof"></td>
+              </tr>
+              <tr id="saving-dex">
+                <th>Decterité (DEX)</th>
+                <td class="bonus"></td>
+                <td class="prof"></td>
+              </tr>
+              <tr id="saving-con">
+                <th>Force (STR)</th>
+                <td class="bonus"></td>
+                <td class="prof"></td>
+              </tr>
+              <tr id="saving-int">
+                <th>Force (STR)</th>
+                <td class="bonus"></td>
+                <td class="prof"></td>
+              </tr>
+              <tr id="saving-wis">
+                <th>Force (STR)</th>
+                <td class="bonus"></td>
+                <td class="prof"></td>
+              </tr>
+              <tr id="saving-cha">
+                <th>Force (STR)</th>
+                <td class="bonus"></td>
+                <td class="prof"></td>
+              </tr>
+            </table>
+            <table id="classes">
+              <thead>
+                <tr><th colspan="4">Classes</th></tr>
+                <tr>
+                  <th>Nom</th>
+                  <th>Lvl</th>
+                  <th>HP</th>
+                  <th>Hit Dice</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+              <tfoot>
+                <tr>
+                  <th>Total</th>
+                </tr>
+              </tfoot>
             </table>
         </div>
       </div>

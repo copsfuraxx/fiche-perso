@@ -3,21 +3,35 @@ table, th, td {
     border-collapse: collapse;
 }
 
+th, td {
+    padding: 5px;
+}
+
 .hidden {
     display: none;
 }
 
-.line {
+.line, .line-wrap {
     display: flex;
     justify-content: space-between;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
     html, input {
         font-size: xx-large;
     }
 
+    table {
+        margin: 5px;
+    }
+
     .line {
         display: block;
+    }
+
+    .line-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: initial;
     }
 }
