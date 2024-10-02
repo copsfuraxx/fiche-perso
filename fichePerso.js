@@ -1,24 +1,41 @@
 let data;
 let bonus = {};
 let prof;
+let saving = {};
 let level;
 let maxLife;
+
+document.addEventListener("DOMContentLoaded", (event) => {
+    const storage = localStorage.getItem("data");
+    if (storage) {
+        data = JSON.parse(storage);
+        LoadData();
+    }
+});
+
+function Export() {
+    var a = document.createElement("a");
+    var file = new Blob([JSON.stringify(data)], {type: "application/json"});
+    a.href = URL.createObjectURL(file);
+    a.download = data.resume.name;
+    a.click();
+}
 
 function ReadFile() {
     const fileElement = document.getElementById("file");
     const reader = new FileReader();
     reader.addEventListener("load",() => {
-        LoadData(reader.result);
-        fileElement.classList.add("hidden");
+        data = JSON.parse(reader.result);
+        localStorage.setItem("data", JSON.stringify(data));
+        LoadData();
     }, false);
-    if (file) {
+    if (fileElement.files[0]) {
         reader.readAsText(fileElement.files[0]);
     }
 }
 
-function LoadData(file) {
+function LoadData() {
     const persoElement = document.getElementById("perso");
-    data = JSON.parse(file);
 
     level = data.classes.reduce((value, elemment) => value + elemment.level, 0);
     prof = Math.ceil(level / 4) + 1;
@@ -42,13 +59,12 @@ function LoadData(file) {
     for (const key of savingKey) {
         let newKey = "saving-" + key;
         const cells = parentElement.querySelector("#" + newKey).cells;
+        let value = bonus["ability-" + key];
         if (data.saving.includes(key)) {
             cells[2].innerHTML = "&#x25CF";
-            cells[1].innerText = "+" + (bonus["ability-" +key] + prof);
+            value += prof;
         }
-        else {
-            cells[1].innerText = "+" + bonus["ability-" +key];
-        }
+        cells[1].innerText = "+" + value;
     }
 
     parentElement = document.getElementById("classes").getElementsByTagName("tbody")[0];
@@ -65,6 +81,8 @@ function LoadData(file) {
     cell = parentElement.insertCell(-1);
     cell.innerHTML = maxLife;
 
+    document.getElementById("file").classList.add("hidden");
+    document.getElementById("export").classList.remove("hidden");
     persoElement.classList.remove("hidden");
 }
 

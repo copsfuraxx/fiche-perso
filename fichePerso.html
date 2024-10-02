@@ -7,6 +7,7 @@
   <script src="fichePerso.js"></script>
 </head>
 <body>
+  <button id="export" class="hidden" onclick="Export()">Exporter le personnage</button>
   <input type="file" id="file" name="file" accept=".json" onchange="ReadFile()"/>
   <div id="perso" class="hidden">
     <div>
@@ -27,7 +28,7 @@
         <p>Histoire : <span id="background"></span></p>
       </div>
       <div>
-        <h2>Information Principale</H2>
+        <h2 class="text-center">Information Principale</H2>
         <div class="line-wrap">
             <table id="ability">
               <thead><tr><th colspan="3">States</th></tr></thead>
