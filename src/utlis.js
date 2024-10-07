@@ -5,3 +5,15 @@ export function CalcBonus(ability) {
     }
     return bonus;
 }
+
+export function CalcSave(bonus, saveList) {
+    let save = {};
+    for (const [key, value] of Object.entries(bonus)) {
+        if (saveList.includes(key)) {
+            save[key] = value + 2;
+        } else {
+            save[key] = value;
+        }
+    }
+    return save;
+}

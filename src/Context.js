@@ -5,4 +5,6 @@ export const PersoDataContext = createContext({
     setPersoData: () => {},
     bonus: {},
     setBonus: () => {},
+    save: {},
+    setSave: () => {},
 });

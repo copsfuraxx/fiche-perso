@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import 'src/App.css';
-import { CalcBonus } from 'src/utlis';
+import { CalcBonus, CalcSave } from 'src/utlis';
 import { PersoDataContext } from 'src/Context';
 import FichePersoPage from 'src/pages/FichePersoPage'
 import InputFile from 'src/components/InputFile';
@@ -8,19 +8,24 @@ import InputFile from 'src/components/InputFile';
 export default function App() {
   const [persoData, setPersoData] = useState(null);
   const [bonus, setBonus] = useState(null);
+  const [save, setSave] = useState(null);
 
   useEffect(() => {
-    const data = localStorage.getItem('data');
+    let data = localStorage.getItem('data');
     if (data) {
-      setPersoData(JSON.parse(data));
+      data = JSON.parse(data);
+      setPersoData(data);
+      const newBonus = CalcBonus(data.ability);
+      setBonus(newBonus);
+      setSave(CalcSave(newBonus, data.save));
     }
   }, []);
 
   
   if (persoData) {
     return (
-      <PersoDataContext.Provider value={{ persoData, setPersoData, bonus, setBonus }}>
-        <FichePersoPage></FichePersoPage>
+      <PersoDataContext.Provider value={{ persoData, setPersoData, bonus, setBonus, save, setSave }}>
+        <FichePersoPage/>
       </PersoDataContext.Provider>
     )
   }
