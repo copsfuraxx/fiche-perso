@@ -38,7 +38,9 @@ export default function App() {
         const data = JSON.parse(reader.result);
         localStorage.setItem("data", JSON.stringify(data));
         setPersoData(data);
-        setBonus(CalcBonus(data.ability));
+        const newBonus = CalcBonus(data.ability);
+        setBonus(newBonus);
+        setSave(CalcSave(newBonus, data.save));
       }, false);
       reader.readAsText(file);
     }
