@@ -30,9 +30,10 @@ jobs:
         FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
       run: |
         cd ./dist
-        ftp $FTP_HOST
+        ftp $FTP_HOST <<EOF
         $FTP_USERNAME
         $FTP_PASSWORD
         cd ./www/fichePerso
         mput *
         bye
+        EOF
