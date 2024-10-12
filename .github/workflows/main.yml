@@ -33,6 +33,6 @@ jobs:
         ftp -inv $FTP_HOST <<EOF
         user $FTP_USERNAME $FTP_PASSWORD
         cd ./www/fichePerso
-        mput *
+        mput index.html assets/*
         bye
         EOF
