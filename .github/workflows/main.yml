@@ -31,8 +31,7 @@ jobs:
       run: |
         cd ./dist
         ftp $FTP_HOST <<EOF
-        user $FTP_USERNAME
-        $FTP_PASSWORD
+        user $FTP_USERNAME $FTP_PASSWORD
         cd ./www/fichePerso
         mput *
         bye
