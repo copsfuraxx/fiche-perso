@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
-import 'src/App.css';
-import { CalcBonus, CalcSave } from 'src/utlis';
+import { CalcBonus, CalcSave } from 'src/utils';
 import { PersoDataContext } from 'src/Context';
-import FichePersoPage from 'src/pages/FichePersoPage'
+import FichePersoPage from 'src/pages/FichePersoPage';
+import CreatePersoPage from 'src/pages/CreatePersoPage';
 import InputFile from 'src/components/InputFile';
 
 export default function App() {
   const [persoData, setPersoData] = useState(null);
   const [bonus, setBonus] = useState(null);
   const [save, setSave] = useState(null);
+  const [create, setCreate] = useState(false);
+
+  if (create) {
+    return (
+      <CreatePersoPage/>
+    )
+  }
 
   useEffect(() => {
     let data = localStorage.getItem('data');
@@ -45,5 +52,10 @@ export default function App() {
       reader.readAsText(file);
     }
   }
-  return (<InputFile onChange={onChange}/>);
+  return (
+    <>
+      <InputFile onChange={onChange}/>
+      <button onClick={() => setCreate(true)}>Créer un nouveau personnage</button>
+    </>
+    );
 }
